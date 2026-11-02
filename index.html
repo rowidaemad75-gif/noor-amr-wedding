@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دعوة فرح نور وعمرو</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f8f1ed;
+            color: #765d55;
+            text-align: center;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            color: #a47770;
+            margin: 15px 0;
+        }
+
+        p {
+            line-height: 1.9;
+        }
+
+        .envelope {
+            width: 230px;
+            height: 150px;
+            margin: 35px auto;
+            background: #c49a91;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 20px #00000015;
+            transition: transform 0.3s;
+        }
+
+        .envelope:hover {
+            transform: scale(1.04);
+        }
+
+        .envelope::before {
+            content: "♥";
+            position: absolute;
+            top: 45px;
+            left: 0;
+            right: 0;
+            font-size: 45px;
+            color: #fff5ef;
+        }
+
+        .envelope::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 115px solid transparent;
+            border-right: 115px solid transparent;
+            border-top: 85px solid #d8b5ab;
+        }
+
+        .hint {
+            font-size: 14px;
+            color: #967d75;
+        }
+
+        .invitation {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            background: #fffaf6;
+            padding: 35px 22px;
+            border: 1px solid #e7d4ca;
+            border-radius: 10px;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .names {
+            font-size: 34px;
+            color: #a47770;
+            font-family: Georgia, serif;
+        }
+
+        .date {
+            font-size: 22px;
+            margin: 25px 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .time-box {
+            background: #f3e5dd;
+            border-radius: 8px;
+            padding: 12px 8px;
+            min-width: 65px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 22px;
+            color: #986e65;
+            font-weight: bold;
+        }
+
+        .time-box small {
+            font-size: 12px;
+        }
+
+        button {
+            background: #a47770;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #875e56;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #b29b91;
+        }
+
+        @media (max-width: 400px) {
+            .countdown {
+                gap: 5px;
+            }
+
+            .time-box {
+                min-width: 55px;
+                padding: 10px 5px;
+            }
+
+            .time-box span {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="cover">
+            <p>بسم الله الرحمن الرحيم</p>
+            <p> ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً إِنَّ فِي ذَلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ﴾</p>
+
+            <h1>دعوة زفاف</h1>
+
+            <div class="envelope" onclick="openInvitation()"></div>
+
+            <p class="hint">اضغط على الظرف لفتح الدعوة</p>
+        </div>
+
+        <div class="invitation" id="invitation">
+
+            <p>بسم الله الرحمن الرحيم</p>
+
+            <p>
+                بكل الحب والسعادة، يسعدنا دعوتكم
+                لمشاركتنا أجمل أيام العمر
+            </p>
+
+            <div class="names">
+                نور
+                <br>
+                <span style="font-size: 25px;">و</span>
+                <br>
+                عمرو
+            </div>
+
+            <p>نتشرف بحضوركم ومشاركتكم فرحتنا</p>
+
+            <div class="date">
+                الأحد
+                <br>
+                ٨ نوفمبر ٢٠٢٦
+            </div>
+
+            <p>متبقي على أجمل يوم</p>
+
+            <div class="countdown">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <small>يوم</small>
+                </div>
+
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <small>ساعة</small>
+                </div>
+
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <small>دقيقة</small>
+                </div>
+
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <small>ثانية</small>
+                </div>
+            </div>
+
+            <p>📍 قاعة ليلتي</p>
+
+            <p>وجودكم يسعدنا ويكمل فرحتنا</p>
+
+            <button onclick="window.print()">
+                حفظ الدعوة
+            </button>
+
+        </div>
+
+        <footer>
+            بكل الحب ❤️
+        </footer>
+
+    </div>
+
+    <script>
+        function openInvitation() {
+            document.getElementById("cover").style.display = "none";
+            document.getElementById("invitation").style.display = "block";
+        }
+
+        const weddingDate =
+            new Date("2026-11-08T19:00:00+02:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance <= 0) {
+                document.querySelector(".countdown").innerHTML =
+                    "أجمل يوم وصل ❤️";
+                return;
+            }
+
+            document.getElementById("days").textContent =
+                Math.floor(distance / (1000 * 60 * 60 * 24));
+
+            document.getElementById("hours").textContent =
+                Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+            document.getElementById("minutes").textContent =
+                Math.floor((distance / (1000 * 60)) % 60);
+
+            document.getElementById("seconds").textContent =
+                Math.floor((distance / 1000) % 60);
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
